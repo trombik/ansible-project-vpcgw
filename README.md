@@ -57,11 +57,11 @@ blocking, [DNS spoofing](https://en.wikipedia.org/wiki/DNS_spoofing), and TLS
 implemented. Increased usage of TLS is also raising the bar.  Furthermore,
 Thailand national is one of the heaviest SNS users, or the penetration rate of
 facebook alone is more than 70% of the population, a source says. The SNS
-addiction has prevented the proposed Single Gateway plans. All in all, the
-censorship in Thailand is more relaxed than elsewhere and it will be so in the
-foreseeable future in my opinion. That being said, in addition to practical
-reasons above as a system administrator, I hate being monitored, especially
-where _the rule of law_ is not in dictionary.
+addiction has prevented the proposed Single Gateway plans. All in all, the the
+Internet censorship in Thailand is more relaxed than elsewhere and it will be
+so in the foreseeable future in my opinion. That being said, in addition to
+practical reasons above as a system administrator, I hate being monitored,
+especially where _the rule of law_ is not in dictionary.
 
 ## Design
 
