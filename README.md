@@ -89,6 +89,7 @@ Implemented. The following table shows platforms that have been confirmed.
 | Platform | IKE client | Notes |
 |----------|------------|-------|
 | Android 8.0.0 | `strongswan` 5.5.3 | MOBIKE just works but other applications hangs after handover, possibly sending packets to wrong route |
+| FreeBSD 11.1 | `strongswan` 5.6.0 | |
 
 ### Routing
 
