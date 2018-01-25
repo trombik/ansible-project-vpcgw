@@ -46,14 +46,17 @@ by number of incidents, which means clicking _share_ button on three
 _sensitive_ articles on SNS leads to 21 years in prison. You may cut the term
 into half by pleading guilty, but still you will be behind bars for more than
 a decade. Because of usual economical reasons and the pressures, the ISPs have
-implemented transparent HTTP proxies, which give network administrators enough
-pains as discussed earlier. Unlike Beijing, the junta is not very confident at
-its legitimacy and popularity. Tracking plain text protocols, blocking sites
-based on IP address (they have blocked BBC, Daily Mail, and other news sites)
-and restricting international peering are all what they can do at the moment.
-Other strict restrictions, such as L3 blocking, DNS forging, and TLS MITM,
-have not been implemented. Increased usage of TLS is also raising the bar.
-Furthermore, Thailand national is one of the heaviest SNS users. The SNS
+implemented [transparent HTTP proxies](https://en.wikipedia.org/wiki/Proxy_server#Transparent_proxy), which
+give network administrators enough pains as discussed earlier. Unlike Beijing,
+the junta is not very confident at its legitimacy and popularity. Tracking
+plain text protocols, blocking sites based on IP address (they have blocked
+BBC, Daily Mail, and other news sites) and restricting international peering
+are all what they can do at the moment.  Other strict restrictions, such as L3
+blocking, [DNS spoofing](https://en.wikipedia.org/wiki/DNS_spoofing), and TLS
+[MITM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), have not been
+implemented. Increased usage of TLS is also raising the bar.  Furthermore,
+Thailand national is one of the heaviest SNS users, or the penetration rate of
+facebook alone is more than 70% of the population, a source says. The SNS
 addiction has prevented the proposed Single Gateway plans. All in all, the
 censorship in Thailand is more relaxed than elsewhere and it will be so in the
 foreseeable future in my opinion. That being said, in addition to practical
