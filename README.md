@@ -27,7 +27,7 @@ other end. It makes the life of the system administrators even more painful.
 VPN creates overheads but it is acceptable and justifiable.
 
 Some service providers restrict access from foreign countries mainly due to
-copyrights or legal issues. In other cases, they shows different contents to
+copyrights or legal issues. In other cases, they show different contents to
 users from foreign countries, or even deny access because non-residents are
 not the targeted customers. In one case, a hosting company drops L4 packets
 NOT from _their intended IP addresses_ thanks to huge amount of malicious
@@ -38,26 +38,27 @@ Thailand is one of ASEAN countries where oppression and censorship are
 ubiquitous. Peering with foreign operators used to be monopolized. Now,
 private companies are allowed and the market has been opened, but the
 operators are under constant pressure from the junta government, calling for
-creating _Single Gateway_. Also, the country has been known for the strictest
-lese majeste law. Even under democratically elected governments, it is illegal
-to access to some _sensitive_ information. Minimum sentence is seven years in
-prison, multiplied by number of incidents, which means clicking _share_ button
-on three _sensitive_ articles on SNS leads to 21 years in prison. You may cut
-the term into half by pleading guilty, but still you will be behind bars for
-more than a decade. Because of usual economical reasons and the pressures, the
-ISPs have implemented transparent HTTP proxies, which gives network administrators
-enough pains. Unlike Beijing, the junta is not very confident at its
-legitimacy and popularity. Tracking plain text protocols, blocking sites based
-on IP address (they have blocked BBC, Daily Mail, and other news sites) and
-restricting international peering are all what they can do at the moment.
-Other strict restrictions, such as L3 blocking, DNS forging, and TLS MITM, are
-not implemented. Increased usage of TLS is also raising the bar. Furthermore,
-Thailand national is one of the heaviest SNS users. The SNS addiction has
-prevented the proposed Single Gateway plans. All in all, the censorship in
-Thailand is more relaxed than elsewhere and it will be so in the foreseeable
-future in my opinion. That being said, in addition to practical reasons above
-as a system administrator, I hate being monitored, especially where _the rule
-of law_ is not in dictionary.
+creating [Single Gateway](https://en.wikipedia.org/wiki/Internet_in_Thailand#Single_Internet_gateway).
+Also, the country has been known for the strictest lese majeste law. Even
+under democratically elected governments, it is illegal to access to some
+_sensitive_ information. Minimum sentence is seven years in prison, multiplied
+by number of incidents, which means clicking _share_ button on three
+_sensitive_ articles on SNS leads to 21 years in prison. You may cut the term
+into half by pleading guilty, but still you will be behind bars for more than
+a decade. Because of usual economical reasons and the pressures, the ISPs have
+implemented transparent HTTP proxies, which give network administrators enough
+pains as discussed earlier. Unlike Beijing, the junta is not very confident at
+its legitimacy and popularity. Tracking plain text protocols, blocking sites
+based on IP address (they have blocked BBC, Daily Mail, and other news sites)
+and restricting international peering are all what they can do at the moment.
+Other strict restrictions, such as L3 blocking, DNS forging, and TLS MITM,
+have not been implemented. Increased usage of TLS is also raising the bar.
+Furthermore, Thailand national is one of the heaviest SNS users. The SNS
+addiction has prevented the proposed Single Gateway plans. All in all, the
+censorship in Thailand is more relaxed than elsewhere and it will be so in the
+foreseeable future in my opinion. That being said, in addition to practical
+reasons above as a system administrator, I hate being monitored, especially
+where _the rule of law_ is not in dictionary.
 
 ## Design
 
