@@ -1,0 +1,2 @@
+tmux_package: "{{ __tmux_package }}"
+tmux_additional_packages: []

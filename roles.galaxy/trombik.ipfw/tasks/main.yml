@@ -1,0 +1,19 @@
+---
+# tasks file for ansible-role-ipfw
+
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- include: "install-{{ ansible_os_family }}.yml"
+
+- name: Create ipfw_script
+  template:
+    src: ipfw.conf.j2
+    dest: "{{ ipfw_conf_file }}"
+    mode: 0600
+    validate: sh -n %s
+  notify: Restart ipfw
+
+- name: Start ipfw
+  service:
+    name: "{{ ipfw_service }}"
+    state: started

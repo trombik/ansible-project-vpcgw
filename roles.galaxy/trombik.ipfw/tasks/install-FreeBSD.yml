@@ -1,0 +1,20 @@
+---
+
+- name: Enable ipfw
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^firewall_enable='
+    line: 'firewall_enable="YES"'
+
+- name: Set firewall_script
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^firewall_script='
+    line: 'firewall_script="{{ ipfw_conf_file }}"'
+
+- name: Enable ipfw_extra_enables
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^{{ item }}='
+    line: '{{ item }}="YES"'
+  with_items: "{{ ipfw_extra_enables }}"

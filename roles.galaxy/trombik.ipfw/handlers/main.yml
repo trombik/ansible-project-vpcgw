@@ -1,0 +1,6 @@
+---
+
+- name: Restart ipfw
+  service:
+    name: "{{ ipfw_service }}"
+    state: restarted

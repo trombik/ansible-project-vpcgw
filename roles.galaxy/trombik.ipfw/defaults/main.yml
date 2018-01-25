@@ -1,0 +1,12 @@
+ipfw_conf_file: /etc/ipfw.conf
+ipfw_extra_enables:
+  - dummynet_enable
+  - firewall_nat_enable
+  - firewall_logif
+
+ipfw_service: ipfw
+
+ipfw_rules: |
+  fwcmd="/sbin/ipfw"
+  ${fwcmd} -f flush
+  ${fwcmd} add 65000 pass all from any to any

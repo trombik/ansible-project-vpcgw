@@ -1,0 +1,10 @@
+- hosts: localhost
+  roles:
+    - ansible-role-ipfw
+  vars:
+    ipfw_rules: |
+      fwcmd="/sbin/ipfw"
+      ${fwcmd} -f flush
+
+      ${fwcmd} add 10000 deny all from any to 8.8.4.4
+      ${fwcmd} add 65000 pass all from any to any
