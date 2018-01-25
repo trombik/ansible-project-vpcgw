@@ -1,0 +1,93 @@
+---
+sysctl:
+  net.inet.ip.forwarding: 1
+ipfw_rules: |
+  fwcmd="/sbin/ipfw"
+  ${fwcmd} -f flush
+  ${fwcmd} nat 100 config if {{ ansible_default_ipv4.interface }}
+  ${fwcmd} check-state
+  ${fwcmd} add nat 100 all from any to any via {{ ansible_default_ipv4.interface }} in
+  ${fwcmd} add nat 100 all from 172.16.0.0/24 to not {{ ansible_default_ipv4.address }} via {{ ansible_default_ipv4.interface }}  out
+  ${fwcmd} add 65000 pass all from any to any keep-state
+  ${fwcmd} add 65001 deny log all from any to any
+
+project_ipsec_secrets: |
+  : RSA server.pem
+  {% for i in project_user_credentials %}
+  {{ i['id'] }} : {{ i['type'] }} "{{ i['password'] }}"
+  {% endfor %}
+
+strongswan_ipsec_secrets:
+  no_log: "{% if project_environment == 'virtualbox' %}no{% else %}yes{% endif %}"
+  mode: "0600"
+  content: "{{ project_ipsec_secrets }}"
+
+strongswan_config_fragments:
+  - name: charon-logging.conf
+    content: |
+      charon {
+        syslog {
+          daemon {
+            default = 2
+          }
+          auth {
+            default = 2
+          }
+        }
+      }
+strongswan_config: |
+  # example from:
+  # https://wiki.strongswan.org/projects/strongswan/wiki/Win7EapMultipleConfig
+  charon {
+    load_modular = yes
+    plugins {
+      include strongswan.d/charon/*.conf
+      eap-peap {
+        phase2_method = mschapv2
+      }
+    }
+    multiple_authentication=no
+  }
+strongswan_ipsec_config: |
+  config setup
+    # allow multiple tunnles with same ID
+    #uniqueids=keep
+
+  conn %default
+    keyexchange=ikev2
+    ike=aes256-sha1-modp1024!
+    esp=aes256-sha1!
+    dpdaction=clear
+    dpddelay=300s
+    rekey=no
+
+  conn vpn
+    left=%any
+    leftsubnet=0.0.0.0/0
+    leftauth=pubkey
+    leftcert=server.pem
+    leftid=vpn.test.trombik.org
+    right=%any
+    rightsourceip=172.16.0.110-172.16.0.120
+    rightauth=eap-mschapv2
+    rightsendcert=never   # see note
+    eap_identity=%any
+    rightdns=8.8.8.8,8.8.4.4
+    auto=add
+x509_certificate:
+  # for how these keys are generated, see:
+  # https://wiki.strongswan.org/projects/strongswan/wiki/SimpleCA
+  - name: ca
+    state: present
+    public:
+      path: /usr/local/etc/ipsec.d/cacerts/ca.pem
+      key: "{{ lookup('file', 'certs/' + project_environment + '/root_pub.pem') }}"
+  - name: server
+    state: present
+    secret:
+      path: /usr/local/etc/ipsec.d/private/server.pem
+      key: "{{ lookup('file', 'certs/' + project_environment + '/vpn.test.trombik.org_key.pem') }}"
+      no_log: "{% if project_environment == 'virtualbox' %}no{% else %}yes{% endif %}"
+    public:
+      path: /usr/local/etc/ipsec.d/certs/server.pem
+      key: "{{ lookup('file', 'certs/' + project_environment + '/vpn.test.trombik.org_pub.pem') }}"

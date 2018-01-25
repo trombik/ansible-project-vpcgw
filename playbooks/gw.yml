@@ -1,0 +1,23 @@
+---
+- hosts:
+  - virtualbox-gw
+  - staging-gw
+  - prod-gw
+  become: yes
+  become_method: sudo
+  remote_user: ec2-user
+  environment:
+    http_proxy: "{{ http_proxy | default() }}"
+    https_proxy: "{{ https_proxy | default() }}"
+    no_proxy: "{{ no_proxy | default() }}"
+  pre_tasks:
+    - debug: var=hostvars[inventory_hostname]
+  roles:
+    - trombik.hostname
+    - trombik.tmux
+    - trombik.zsh
+    - trombik.vim
+    - trombik.sysctl
+    - trombik.ipfw
+    - trombik.x509-certificate
+    - trombik.strongswan

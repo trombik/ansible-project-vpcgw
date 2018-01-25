@@ -1,0 +1,33 @@
+---
+all:
+  hosts:
+    gw1.vpc1.trombik.org:
+      vagrant_priority: 10
+      ansible_host: 172.16.100.100
+    f.vpc1.trombik.org:
+      vagrant_priority: 11
+      ansible_host: 192.168.100.100
+      vagrant_box: trombik/test-freebsd-11.1-amd64
+  children:
+    gw1:
+      hosts:
+        gw1.vpc1.trombik.org:
+    virtualbox-gw:
+      children:
+        gw1:
+    virtualbox-credentials:
+      children:
+        gw1:
+    gw:
+      children:
+        gw1:
+    f:
+      hosts:
+        f.vpc1.trombik.org:
+    virtualbox-f:
+      children:
+        f:
+    virtualbox:
+      children:
+        gw1:
+        f:

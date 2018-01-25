@@ -1,0 +1,4 @@
+---
+project_environment: virtualbox
+# this is defined in inventories/virtualbox/virtualbox.yml
+hostname_fqdn: "{{ inventory_hostname }}"
